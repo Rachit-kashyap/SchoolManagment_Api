@@ -27,7 +27,6 @@ exports.listSchools = async (req, res) => {
         const schools = await getAllSchools();
         const userLocation = { latitude: parseFloat(userLat), longitude: parseFloat(userLon) };
 
-        // Sort schools by distance
         const sortedSchools = schools.map(school => ({
             ...school,
             distance: geolib.getDistance(userLocation, { latitude: school.latitude, longitude: school.longitude })
